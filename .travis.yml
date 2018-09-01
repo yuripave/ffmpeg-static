@@ -8,8 +8,6 @@ install:
 
 script:
   - docker run -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin -ti --rm ci bash -c "./build.sh -j $(($(nproc) + 1))"
-  - ldd bin/ffmpeg
-  - ldd bin/ffprobe
   - ls -al bin
   - ./bin/ffmpeg -version
   - ./bin/ffprobe -version
@@ -23,6 +21,8 @@ before_deploy:
 deploy:
   provider: releases
   api_key: $GITHUB_OAUTH
-  file_glob: true
-  file: bin/*
+  overwrite: true
+  file:
+    - "bin/ffmpeg"
+    - "bin/ffprobe"
   skip_cleanup: true
