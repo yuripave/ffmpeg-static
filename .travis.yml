@@ -4,11 +4,11 @@ services:
   - docker
 
 install:
-  - mkdir bin && chmod -R ug+rwx . && docker build -t ci .
+  - mkdir bin && docker build -t ci .
 
 script:
   # - docker run -ti --rm ci bash -c "cd /ffmpeg-static && ./build.sh -j $(($(nproc) + 1)) && ldd bin/ffmpeg && (ldd bin/ffmpeg | grep 'not a dynamic executable')"
-  - docker run -ti --rm ci bash -c "./test.sh" -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin
+  - docker run -ti --rm ci bash -c "./test.sh && ls -al && ls -al bin" -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin
 
 before_deploy:
   # Set up git user name and tag this commit
