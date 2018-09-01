@@ -45,9 +45,10 @@ FROM ubuntu:bionic
 #   && rm -rf /var/lib/apt/lists/*
 
 # Copy the build scripts.
-COPY build.sh test.sh download.pl env.source fetchurl /ffmpeg-static/
+COPY ./ /ffmpeg-static/
 
 RUN chmod -R ug+rwx /ffmpeg-static
 
-VOLUME /ffmpeg-static
-CMD cd /ffmpeg-static; /bin/bash
+WORKDIR /ffmpeg-static
+
+CMD ["/bin/bash"]

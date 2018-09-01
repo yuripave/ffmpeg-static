@@ -1,4 +1,3 @@
 #!/bin/sh
 
-mkdir ./bin;
-echo "test text" >> ./bin/ffmpeg
+echo "test text" >> ./bin/ffmpeg.txt
