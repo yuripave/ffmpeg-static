@@ -9,7 +9,7 @@ install:
 script:
   - docker run -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin -ti --rm ci bash -c "./build.sh -j $(($(nproc) + 1)) ; ldd bin/ffmpeg ; (ldd bin/ffmpeg | grep 'not a dynamic executable')"
   - ls -al bin
-  - ./bin/ffmpeg --codecs
+  - ./bin/ffmpeg -codecs
 
 before_deploy:
   # Set up git user name and tag this commit
