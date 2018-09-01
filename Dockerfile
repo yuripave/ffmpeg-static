@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 
 # Basic packages needed to download dependencies and unpack them.
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y autoconf automake build-essential libass-dev libfreetype6-dev libtheora-dev libtool libvorbis-dev pkg-config texinfo zlib1g-dev libfdk-aac-dev libmp3lame-dev yasm frei0r-plugins-dev libgnutls-dev ladspa-sdk libbluray-dev libxml2-dev libiec61883-dev libavc1394-dev libbs2b-dev libcaca-dev libdc1394-22-dev flite1-dev libgme-dev libgsm1-dev libmodplug-dev libopencv-dev libopenjp2-7-dev libopus-dev libpulse-dev libshine-dev libsnappy-dev libsoxr-dev libssh-dev libspeex-dev libtwolame-dev libvpx-dev libwavpack-dev libwebp-dev libx264-dev libx265-dev libnuma-dev libxvidcore-dev libczmq-dev libzmq5-dev libsodium-dev libpgm-dev libnorm-dev libzvbi-dev libopenal-dev nvidia-opencl-dev libcdio-dev libcdio-cdda-dev libcdio-paranoia-dev librtmp-dev wget
