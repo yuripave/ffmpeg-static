@@ -44,8 +44,7 @@ FROM ubuntu:bionic
 #   yasm \
 #   && rm -rf /var/lib/apt/lists/*
 
-RUN chmod -R ug+rwx /ffmpeg-static
-
+RUN mkdir /ffmpeg-static
 WORKDIR /ffmpeg-static
 
 CMD ["/bin/bash"]
