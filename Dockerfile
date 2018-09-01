@@ -46,6 +46,7 @@ FROM ubuntu:bionic
 
 # Copy the build scripts.
 COPY ./ /ffmpeg-static/
+RUN mkdir /ffmpeg-static/bin
 
 RUN chmod -R ug+rwx /ffmpeg-static
 
