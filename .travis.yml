@@ -8,7 +8,7 @@ install:
 
 script:
   # - docker run -ti --rm ci bash -c "cd /ffmpeg-static && ./build.sh -j $(($(nproc) + 1)) && ldd bin/ffmpeg && (ldd bin/ffmpeg | grep 'not a dynamic executable')"
-  - docker run -ti --rm ci bash -c "ls -al && ./test.sh" -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin && pwd && ls -al && ls -al bin
+  - mkdir bin && docker run -ti --rm ci bash -c "./test.sh" -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin && pwd && ls -al && ls -al bin
 
 before_deploy:
   # Set up git user name and tag this commit
