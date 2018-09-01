@@ -12,6 +12,8 @@ script:
 
 before_deploy:
   # Set up git user name and tag this commit
+  - ls -al
+  - ls -al bin
   - git config --local user.name "$EMAIL"
   - git config --local user.email "$USERNAME"
   - git tag "$(date +'%Y%m%d')-$(git log --format=%h -1)"
