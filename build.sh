@@ -448,3 +448,5 @@ PATH="$BIN_DIR:$PATH" make -j $jval
 make install
 make distclean
 hash -r
+
+./$BIN_DIR/ffmpeg -version
