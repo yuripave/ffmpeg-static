@@ -11,6 +11,9 @@ script:
   - docker run -ti --rm ci bash -c "cd /ffmpeg-static && ./test.sh"
 
 before_deploy:
+  # Set up git user name and tag this commit
+  - git config --local user.name "$EMAIL"
+  - git config --local user.email "$USERNAME"
   - git tag "$(date +'%Y%m%d')-$(git log --format=%h -1)"
 
 deploy:
