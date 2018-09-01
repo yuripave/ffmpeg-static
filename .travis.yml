@@ -7,14 +7,13 @@ install:
   - mkdir bin && docker build -t ci .
 
 script:
-  - echo $TRAVIS_BUILD_DIR
-  # - docker run -ti --rm ci bash -c "cd /ffmpeg-static && ./build.sh -j $(($(nproc) + 1)) && ldd bin/ffmpeg && (ldd bin/ffmpeg | grep 'not a dynamic executable')"
-  - docker run -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin -ti --rm ci bash -c "./test.sh && ls -al && ls -al bin"
+  - docker run -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin -ti --rm ci bash -c "./build.sh -j $(($(nproc) + 1)) && ldd bin/ffmpeg && (ldd bin/ffmpeg | grep 'not a dynamic executable')"
+  - ls -al bin
+  - ./bin/ffmpeg -version
+  - ./bin/ffprobe -version
 
 before_deploy:
   # Set up git user name and tag this commit
-  - ls -al
-  - ls -al bin
   - git config --local user.name "$EMAIL"
   - git config --local user.email "$USERNAME"
   - git tag "$(date +'%Y%m%d')"
