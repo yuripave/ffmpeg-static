@@ -229,22 +229,14 @@ fi
 echo "*** Building OpenSSL ***"
 cd $BUILD_DIR/openssl*
 [ $rebuild -eq 1 -a -f Makefile ] && make distclean || true
-if [ "$platform" = "darwin" ]; then
-  PATH="$BIN_DIR:$PATH" ./Configure darwin64-x86_64-cc --prefix=$TARGET_DIR
-elif [ "$platform" = "linux" ]; then
-  PATH="$BIN_DIR:$PATH" ./config --prefix=$TARGET_DIR
-fi
+PATH="$BIN_DIR:$PATH" ./config --prefix=$TARGET_DIR
 PATH="$BIN_DIR:$PATH" make -j $jval
 make install
 
 echo "*** Building zlib ***"
 cd $BUILD_DIR/zlib*
 [ $rebuild -eq 1 -a -f Makefile ] && make distclean || true
-if [ "$platform" = "linux" ]; then
-  [ ! -f config.status ] && PATH="$BIN_DIR:$PATH" ./configure --prefix=$TARGET_DIR
-elif [ "$platform" = "darwin" ]; then
-  [ ! -f config.status ] && PATH="$BIN_DIR:$PATH" ./configure --prefix=$TARGET_DIR
-fi
+[ ! -f config.status ] && PATH="$BIN_DIR:$PATH" ./configure --prefix=$TARGET_DIR
 PATH="$BIN_DIR:$PATH" make -j $jval
 make install
 
@@ -323,13 +315,9 @@ cd librtmp
 [ $rebuild -eq 1 ] && make distclean || true
 
 # there's no configure, we have to edit Makefile directly
-if [ "$platform" = "linux" ]; then
-  sed -i "/INC=.*/d" ./Makefile # Remove INC if present from previous run.
-  sed -i "s/prefix=.*/prefix=${TARGET_DIR_SED}\nINC=-I\$(prefix)\/include/" ./Makefile
-  sed -i "s/SHARED=.*/SHARED=no/" ./Makefile
-elif [ "$platform" = "darwin" ]; then
-  sed -i "" "s/prefix=.*/prefix=${TARGET_DIR_SED}/" ./Makefile
-fi
+sed -i "/INC=.*/d" ./Makefile # Remove INC if present from previous run.
+sed -i "s/prefix=.*/prefix=${TARGET_DIR_SED}\nINC=-I\$(prefix)\/include/" ./Makefile
+sed -i "s/SHARED=.*/SHARED=no/" ./Makefile
 make install_base
 
 echo "*** Building libsoxr ***"
@@ -342,11 +330,7 @@ make install
 echo "*** Building libvidstab ***"
 cd $BUILD_DIR/vid.stab-release-*
 [ $rebuild -eq 1 -a -f Makefile ] && make distclean || true
-if [ "$platform" = "linux" ]; then
-  sed -i "s/vidstab SHARED/vidstab STATIC/" ./CMakeLists.txt
-elif [ "$platform" = "darwin" ]; then
-  sed -i "" "s/vidstab SHARED/vidstab STATIC/" ./CMakeLists.txt
-fi
+sed -i "s/vidstab SHARED/vidstab STATIC/" ./CMakeLists.txt
 PATH="$BIN_DIR:$PATH" cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="$TARGET_DIR"
 make -j $jval
 make install
