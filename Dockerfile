@@ -44,7 +44,10 @@ FROM ubuntu:bionic
 #   yasm \
 #   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /ffmpeg-static
+# Copy the build scripts.
+COPY ./ /ffmpeg-static/
+RUN chmod -R ug+rwx /ffmpeg-static
+
 WORKDIR /ffmpeg-static
 
 CMD ["/bin/bash"]
