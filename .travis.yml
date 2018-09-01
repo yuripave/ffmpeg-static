@@ -7,4 +7,17 @@ install:
   - docker build -t ci .
 
 script:
-  - docker run -ti --rm ci bash -c "cd /ffmpeg-static ; ./build.sh -j $(($(nproc) + 1)) && ldd bin/ffmpeg && (ldd bin/ffmpeg | grep 'not a dynamic executable')"
+  # - docker run -ti --rm ci bash -c "cd /ffmpeg-static && ./build.sh -j $(($(nproc) + 1)) && ldd bin/ffmpeg && (ldd bin/ffmpeg | grep 'not a dynamic executable')"
+  - docker run -ti --rm ci bash -c "cd /ffmpeg-static && ./test.sh"
+
+before_deploy:
+  - git tag "$(date +'%Y%m%d')-$(git log --format=%h -1)"
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_OAUTH
+  file_glob: true
+  file: /ffmpeg-static/bin/*
+  skip_cleanup: true
+  on:
+    tags: true
