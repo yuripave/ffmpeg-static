@@ -4,21 +4,24 @@ services:
   - docker
 
 install:
-  - mkdir bin && docker build -t ci .
+  # - mkdir bin && docker build -t ci .
 
 script:
-  - docker run -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin -ti --rm ci bash -c "./build.sh -j $(($(nproc) + 1)) ;  zip -r bin/build.zip ./"
-  - ls -al bin
-  - ./bin/ffmpeg -codecs
-  - ./bin/ffmpeg -i 'https://archive.org/download/pattersonh2006-01-07.184.flac16/pattersonh2006-01-07d1t01.flac' output.mp3
+  - whoami
+  # - docker run -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin -ti --rm ci bash -c "./build.sh -j $(($(nproc) + 1)) ;  zip -r bin/build.zip ./"
+  # - ls -al bin
+  # - ./bin/ffmpeg -codecs
+  # - ./bin/ffmpeg -i 'https://archive.org/download/pattersonh2006-01-07.184.flac16/pattersonh2006-01-07d1t01.flac' output.mp3
 
 before_deploy:
   # Set up git user name and tag this commit
   - git config --local user.name "$EMAIL"
   - git config --local user.email "$USERNAME"
+  - git tag "`date +'%Y%m%d%H%M%S'`"
   # 20180902-N-91727-gaeb73c7
-  - git tag "`date +'%Y%m%d'`-`./bin/ffmpeg -version | { read f s t r ; echo $t ; }`"
-  - export BODY="\`\`\` `./bin/ffmpeg -version` \`\`\`"
+  # - git tag "`date +'%Y%m%d'`-`./bin/ffmpeg -version | { read f s t r ; echo $t ; }`"
+  # - export BODY="\`\`\` `./bin/ffmpeg -version` \`\`\`"
+  - export BODY="\`\`\` var test=codec \`\`\`"
 
 deploy:
   provider: releases
