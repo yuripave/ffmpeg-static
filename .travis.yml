@@ -8,6 +8,7 @@ install:
   # - mkdir bin && docker build -t ci .
 
 script:
+  - whoami
   # - docker run -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin -ti --rm ci bash -c "./build.sh -j $(($(nproc) + 1)) ;  zip -r bin/build.zip ./"
   # - ls -al bin
   # - ./bin/ffmpeg -codecs
