@@ -28,7 +28,6 @@ unless client.scopes.include? 'public_repo' or client.scopes.include? 'repo'
   raise Error, "Insufficient permissions. Make sure your token contains the repo or public_repo scope."
 end
 
-puts "Logged in as #{user.name}"
 puts "Deploying to repo: #{options[:repo_slug]}"
 
 tag_matched = false
@@ -54,7 +53,7 @@ else
 end
 
 def files(options)
-  if options[:file_glob] == true
+  if options[:file_glob] == "true"
     Array(options[:file]).map do |glob|
       Dir.glob(glob)
     end.flatten
@@ -73,7 +72,7 @@ def upload_file(client, file, filename, release_url)
 end
 
 if options[:file]
-  puts files(options).inspect
+  puts files(options)
   files(options).each do |file|
     existing_url = nil
     filename = Pathname.new(file).basename.to_s

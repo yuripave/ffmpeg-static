@@ -4,23 +4,17 @@ services:
   - docker
 
 install:
-  - bundle install
+  - bundle install && chmod -R ug+rwx .
   # - mkdir bin && docker build -t ci .
 
 script:
-  - whoami
-  - chmod -R ug+rwx ./
   # - docker run -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin -ti --rm ci bash -c "./build.sh -j $(($(nproc) + 1)) ;  zip -r bin/build.zip ./"
   # - ls -al bin
   # - ./bin/ffmpeg -codecs
   # - ./bin/ffmpeg -i 'https://archive.org/download/pattersonh2006-01-07.184.flac16/pattersonh2006-01-07d1t01.flac' output.mp3
-  # Set up git user name and tag this commit
-  # - git config --local user.name "$EMAIL"
-  # - git config --local user.email "$USERNAME"
-  # - git tag "`date +'%Y%m%d%H%M%S'`"
-  # 20180902-N-91727-gaeb73c7
+  
   # - `date +'%Y%m%d'`-`./bin/ffmpeg -version | { read f s t r ; echo $t ; }`
   # - `./bin/ffmpeg -version`
 
   # Custom Deploy Script
-  - ruby github_release.rb -r $TRAVIS_REPO_SLUG -b "<pre><code>`whoami`</code></pre>" -t "`date +'%Y%m%d%H%M%S'`" -s $GITHUB_OAUTH -g true -f *
+  - ruby github_release.rb -r $TRAVIS_REPO_SLUG -b "<pre><code>`whoami`</code></pre>" -t "`date +'%Y%m%d%H%M%S'`" -s $GITHUB_OAUTH -g true -f '*'
