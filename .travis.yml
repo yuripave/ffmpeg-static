@@ -4,6 +4,7 @@ services:
   - docker
 
 install:
+  - bundle install
   # - mkdir bin && docker build -t ci .
 
 script:
