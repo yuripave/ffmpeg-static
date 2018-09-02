@@ -32,25 +32,25 @@ puts "Deploying to repo: #{options[:repo_slug]}"
 
 tag_matched = false
 release_url = nil
-releases = client.releases(options[:repo_slug])
+# releases = client.releases(options[:repo_slug])
 body = ""
 if options[:body]
   body = options[:body]
 end
 
-releases.each do |release|
-  if release.tag_name == options[:tag_name]
-    release_url = release.rels[:self].href
-    tag_matched = true
-  end
-end
+# releases.each do |release|
+#   if release.tag_name == options[:tag_name]
+#     release_url = release.rels[:self].href
+#     tag_matched = true
+#   end
+# end
 
 # if tag has been pushed directly to git, create a github release
-if tag_matched == false
+# if tag_matched == false
   release_url = client.create_release(options[:repo_slug], options[:tag_name], { :name => options[:tag_name], :body => body })
-else
-  client.update_release(release_url, { :name => options[:tag_name], :body => body })
-end
+# else
+#   client.update_release(release_url, { :name => options[:tag_name], :body => body })
+# end
 
 # def files(options)
 #   if options[:file_glob] == "true"
