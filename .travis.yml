@@ -16,5 +16,7 @@ script:
   # - `date +'%Y%m%d'`-`./bin/ffmpeg -version | { read f s t r ; echo $t ; }`
   # - `./bin/ffmpeg -version`
 
+
+before_deploy:
   # Custom Deploy Script
   - ruby github_release.rb -r $TRAVIS_REPO_SLUG -b "<pre><code>`whoami && pwd`</code></pre>" -t "`date +'%Y%m%d%H%M%S'`" -s $GITHUB_OAUTH -g true -f '*'
