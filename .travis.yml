@@ -18,8 +18,6 @@ before_deploy:
   - git config --local user.email "$USERNAME"
   # 20180902-N-91727-gaeb73c7
   - git tag "`date +'%Y%m%d'`-`./bin/ffmpeg -version | { read f s t r ; echo $t ; }`"
-
-before_deploy:
   - export BODY="\`\`\` `./bin/ffmpeg -version` \`\`\`"
 
 deploy:
