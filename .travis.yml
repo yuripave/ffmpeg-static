@@ -14,15 +14,15 @@ script:
   # - ./bin/ffmpeg -codecs
   # - ./bin/ffmpeg -i 'https://archive.org/download/pattersonh2006-01-07.184.flac16/pattersonh2006-01-07d1t01.flac' output.mp3
 
-before_deploy:
-  # - `date +'%Y%m%d'`-`./bin/ffmpeg -version | { read f s t r ; echo $t ; }`
-  - export TAG="`date +'%Y%m%d%H%M%S'`"
-  # - `./bin/ffmpeg -version`
-  - export BODY="<pre><code>`whoami`</code></pre>"
+# before_deploy:
+#   # - `date +'%Y%m%d'`-`./bin/ffmpeg -version | { read f s t r ; echo $t ; }`
+#   - export TAG="`date +'%Y%m%d%H%M%S'`"
+#   # - `./bin/ffmpeg -version`
+#   - export BODY="<pre><code>`whoami`</code></pre>"
 
-  - git config --local user.name "$EMAIL"
-  - git config --local user.email "$USERNAME"
-  - git tag $TAG
+#   - git config --local user.name "$EMAIL"
+#   - git config --local user.email "$USERNAME"
+#   - git tag $TAG
 
 deploy:
   provider: releases
@@ -32,5 +32,5 @@ deploy:
   file: *
   skip_cleanup: true
 
-after_deploy:
-  - ruby release_body.rb -s $GITHUB_OAUTH -t $TAG -b $BODY
+# after_deploy:
+#   - ruby release_body.rb -s $GITHUB_OAUTH -t $TAG -b $BODY
