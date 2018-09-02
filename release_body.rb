@@ -18,7 +18,7 @@ unless client.scopes.include? 'public_repo' or client.scopes.include? 'repo'
   raise Error, "Insufficient permissions. Make sure your token contains the repo or public_repo scope."
 end
 
-releases = client.releases(context.env['TRAVIS_REPO_SLUG'])
+releases = client.releases(ENV['TRAVIS_REPO_SLUG'])
 
 releases.each do |release|
   if release.tag_name == options[:tag_name]
