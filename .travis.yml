@@ -7,7 +7,7 @@ install:
   - mkdir bin && docker build -t ci .
 
 script:
-  - docker run -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin -ti --rm ci bash -c "./build.sh -j $(($(nproc) + 1)) ; ldd bin/ffmpeg ; (ldd bin/ffmpeg | grep 'not a dynamic executable')"
+  - docker run -v $TRAVIS_BUILD_DIR/bin:/ffmpeg-static/bin -ti --rm ci bash -c "./build.sh -j $(($(nproc) + 1)) ;  tar -zcvf bin/build.tar.gz ./"
   - ls -al bin
   - ./bin/ffmpeg -codecs
 
@@ -21,7 +21,6 @@ deploy:
   provider: releases
   api_key: $GITHUB_OAUTH
   overwrite: true
-  file:
-    - "bin/ffmpeg"
-    - "bin/ffprobe"
+  file_glob: true
+  file: bin/*
   skip_cleanup: true
