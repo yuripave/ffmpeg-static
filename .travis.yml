@@ -24,13 +24,13 @@ script:
 #   - git config --local user.email "$USERNAME"
 #   - git tag $TAG
 
-deploy:
-  provider: releases
-  api_key:
-    secure: $GITHUB_OAUTH
-  file_glob: true
-  file: *
-  skip_cleanup: true
+# deploy:
+#   provider: releases
+#   api_key:
+#     secure: $GITHUB_OAUTH
+#   file_glob: true
+#   file: *
+#   skip_cleanup: true
 
 # after_deploy:
 #   - ruby release_body.rb -s $GITHUB_OAUTH -t $TAG -b $BODY
