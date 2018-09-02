@@ -34,4 +34,4 @@ deploy:
   skip_cleanup: true
 
 after_deploy:
-  - ruby release_body.rb -b $BODY -t $TAG -s $GITHUB_OAUTH
+  - ./release_body.rb -s $GITHUB_OAUTH -t $TAG -b $BODY 
