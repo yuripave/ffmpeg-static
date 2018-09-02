@@ -47,7 +47,7 @@ end
 
 # if tag has been pushed directly to git, create a github release
 if tag_matched == false
-  release_url = client.create_release(options[:repo_slug], options[:tag_name], {:draft => true, :name => options[:tag_name], :body => body }).rels[:self].href
+  release_url = client.create_release(options[:repo_slug], options[:tag_name], {:name => options[:tag_name], :body => body }).rels[:self].href
 else
   client.update_release(release_url, { :name => options[:tag_name], :body => body })
 end
@@ -94,4 +94,4 @@ if options[:file]
   end
 end
 
-client.update_release(release_url, {:draft => false}.merge(options))
+# client.update_release(release_url, {:draft => false}.merge(options))
