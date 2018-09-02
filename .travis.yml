@@ -26,3 +26,4 @@ deploy:
   file_glob: true
   file: bin/*
   skip_cleanup: true
+  body: "\`\`\` `./bin/ffmpeg -version` \`\`\`"
