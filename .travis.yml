@@ -21,7 +21,7 @@ before_deploy:
   # 20180902-N-91727-gaeb73c7
   # - git tag "`date +'%Y%m%d'`-`./bin/ffmpeg -version | { read f s t r ; echo $t ; }`"
   # - export BODY="\`\`\` `./bin/ffmpeg -version` \`\`\`"
-  - export BODY="\`\`\` var test=codec \`\`\`"
+  - export BODY="\`\`\` var test=codec \\\n wut \`\`\`"
 
 deploy:
   provider: releases
