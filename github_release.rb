@@ -47,51 +47,51 @@ end
 
 # if tag has been pushed directly to git, create a github release
 if tag_matched == false
-  release_url = client.create_release(options[:repo_slug], options[:tag_name], {:name => options[:tag_name], :body => body }).rels[:self].href
+  release_url = client.create_release(options[:repo_slug], options[:tag_name], {:draft => true, :name => options[:tag_name], :body => body }).rels[:self].href
 else
   client.update_release(release_url, { :name => options[:tag_name], :body => body })
 end
 
-def files(options)
-  if options[:file_glob] == "true"
-    Array(options[:file]).map do |glob|
-      Dir.glob(glob)
-    end.flatten
-  else
-    Array(options[:file])
-  end
-end
+# def files(options)
+#   if options[:file_glob] == "true"
+#     Array(options[:file]).map do |glob|
+#       Dir.glob(glob)
+#     end.flatten
+#   else
+#     Array(options[:file])
+#   end
+# end
 
-def upload_file(client, file, filename, release_url)
-  content_type = MIME::Types.type_for(file).first.to_s
-  if content_type.empty?
-    # Specify the default content type, as it is required by GitHub
-    content_type = "application/octet-stream"
-  end
-  client.upload_asset(release_url, file, {:name => filename, :content_type => content_type})
-end
+# def upload_file(client, file, filename, release_url)
+#   content_type = MIME::Types.type_for(file).first.to_s
+#   if content_type.empty?
+#     # Specify the default content type, as it is required by GitHub
+#     content_type = "application/octet-stream"
+#   end
+#   client.upload_asset(release_url, file, {:name => filename, :content_type => content_type})
+# end
 
-if options[:file]
-  puts files(options)
-  files(options).each do |file|
-    existing_url = nil
-    filename = Pathname.new(file).basename.to_s
-    client.release(release_url).rels[:assets].get.data.each do |existing_file|
-      if existing_file.name == filename
-        existing_url = existing_file.url
-      end
-    end
-    if !existing_url
-      puts "#{filename} uploading."
-      upload_file(client, file, filename, release_url)
-    elsif existing_url && options[:overwrite]
-      puts "#{filename} already exists, overwriting."
-      client.delete_release_asset(existing_url)
-      upload_file(client, file, filename, release_url)
-    else
-      puts "#{filename} already exists, skipping."
-    end
-  end
-end
+# if options[:file]
+#   puts files(options)
+#   files(options).each do |file|
+#     existing_url = nil
+#     filename = Pathname.new(file).basename.to_s
+#     client.release(release_url).rels[:assets].get.data.each do |existing_file|
+#       if existing_file.name == filename
+#         existing_url = existing_file.url
+#       end
+#     end
+#     if !existing_url
+#       puts "#{filename} uploading."
+#       upload_file(client, file, filename, release_url)
+#     elsif existing_url && options[:overwrite]
+#       puts "#{filename} already exists, overwriting."
+#       client.delete_release_asset(existing_url)
+#       upload_file(client, file, filename, release_url)
+#     else
+#       puts "#{filename} already exists, skipping."
+#     end
+#   end
+# end
 
-# client.update_release(release_url, {:draft => false}.merge(options))
+client.update_release(release_url, {:draft => false}.merge(options))
