@@ -20,7 +20,6 @@ before_deploy:
   # - `./bin/ffmpeg -version`
   - export BODY="<pre><code>`whoami`</code></pre>"
 
-  # Set up git user name and tag this commit	
   - git config --local user.name "$EMAIL"
   - git config --local user.email "$USERNAME"
   - git tag $TAG
@@ -34,4 +33,4 @@ deploy:
   skip_cleanup: true
 
 after_deploy:
-  - ./release_body.rb -s $GITHUB_OAUTH -t $TAG -b $BODY 
+  - ruby release_body.rb -s $GITHUB_OAUTH -t $TAG -b $BODY
