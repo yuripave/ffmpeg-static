@@ -13,11 +13,27 @@ script:
   # - ls -al bin
   # - ./bin/ffmpeg -codecs
   # - ./bin/ffmpeg -i 'https://archive.org/download/pattersonh2006-01-07.184.flac16/pattersonh2006-01-07d1t01.flac' output.mp3
-  
-  # - `date +'%Y%m%d'`-`./bin/ffmpeg -version | { read f s t r ; echo $t ; }`
-  # - `./bin/ffmpeg -version`
-
 
 before_deploy:
-  # Custom Deploy Script
-  - ruby github_release.rb -r $TRAVIS_REPO_SLUG -b "<pre><code>`whoami && pwd`</code></pre>" -t "`date +'%Y%m%d%H%M%S'`" -s $GITHUB_OAUTH -g true -f '*'
+  # - `date +'%Y%m%d'`-`./bin/ffmpeg -version | { read f s t r ; echo $t ; }`
+  - export TAG="`date +'%Y%m%d%H%M%S'`"
+  # - `./bin/ffmpeg -version`
+  - export BODY="<pre><code>`whoami`</code></pre>"
+
+  # Set up git user name and tag this commit	
+  - git config --local user.name "$EMAIL"
+  - git config --local user.email "$USERNAME"
+  - git tag $TAG
+
+deploy:
+  provider: releases
+  api_key:
+    secure: $GITHUB_OAUTH
+  file_glob: true
+  file: *
+  skip_cleanup: true
+  on:
+    tags: true
+
+after_deploy:
+  - ruby release_body.rb -b $BODY -t $TAG -s $GITHUB_OAUTH
