@@ -205,6 +205,12 @@ download \
   "https://github.com/xiph/rav1e/archive/"
 
 download \
+  "0.5.1.tar.gz" \
+  "dav1d-0.5.1.tar.gz" \
+  "c99c75a1d2ff8673f4a4d00d2d8aae9d" \
+  "https://github.com/videolan/dav1d/archive/"
+
+download \
   "ffmpeg-snapshot.tar.bz2" \
   "" \
   "" \
@@ -388,6 +394,11 @@ cd $BUILD_DIR/speex*
 make -j $jval
 make install
 
+echo "*** Building libdav1d ***"
+cd $BUILD_DIR/dav1d*
+meson build --prefix=$TARGET_DIR --libdir=lib --buildtype release -Ddefault_library=static
+ninja -C build install
+
 echo "*** Building librav1e ***"
 cd $BUILD_DIR/rav1e*
 [ $rebuild -eq 1 ] && cargo clean || true
@@ -408,13 +419,15 @@ PKG_CONFIG_PATH="$TARGET_DIR/lib/pkgconfig" ./configure \
   --extra-libs="-lpthread -lm -lz" \
   --extra-ldexeflags="-static" \
   --bindir="$BIN_DIR" \
+  --disable-debug \
+  --disable-ffplay \
   --enable-pic \
-  --enable-ffplay \
   --enable-fontconfig \
   --enable-frei0r \
   --enable-gpl \
   --enable-version3 \
   --enable-libass \
+  --enable-libdav1d \
   --enable-libfribidi \
   --enable-libfdk-aac \
   --enable-libfreetype \

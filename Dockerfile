@@ -39,7 +39,9 @@ RUN apt-get update && apt-get install -y \
   libxvidcore-dev \
   lsb-release \
   nasm \
+  ninja-build \
   pkg-config \
+  python3-pip \
   sudo \
   tar \
   texi2html \
@@ -49,6 +51,9 @@ RUN apt-get update && apt-get install -y \
 # Install rust and cargo-c
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y \
   && /root/.cargo/bin/cargo install cargo-c
+
+# Install meson
+RUN pip3 install meson
 
 # Copy the build scripts.
 COPY ./ /ffmpeg-static/
