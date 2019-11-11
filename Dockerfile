@@ -38,12 +38,17 @@ RUN apt-get update && apt-get install -y \
   libxcb-xfixes0-dev \
   libxvidcore-dev \
   lsb-release \
+  nasm \
   pkg-config \
   sudo \
   tar \
   texi2html \
   yasm \
   && rm -rf /var/lib/apt/lists/*
+
+# Install rust and cargo-c
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y \
+  && /root/.cargo/bin/cargo install cargo-c
 
 # Copy the build scripts.
 COPY ./ /ffmpeg-static/

@@ -199,6 +199,12 @@ download \
   "https://github.com/xiph/speex/archive/"
 
 download \
+  "0.1.0.tar.gz" \
+  "rav1e-0.1.0.tar.gz" \
+  "cd383e61e86eef0a689c9c951a4c7652" \
+  "https://github.com/xiph/rav1e/archive/"
+
+download \
   "ffmpeg-snapshot.tar.bz2" \
   "" \
   "" \
@@ -382,6 +388,12 @@ cd $BUILD_DIR/speex*
 make -j $jval
 make install
 
+echo "*** Building librav1e ***"
+cd $BUILD_DIR/rav1e*
+[ $rebuild -eq 1 ] && cargo clean || true
+cargo cinstall --release --prefix=$TARGET_DIR
+sed -i 's/-lgcc_s/-lgcc_eh/g' $TARGET_DIR/lib/pkgconfig/rav1e.pc
+
 # FFMpeg
 echo "*** Building FFmpeg ***"
 cd $BUILD_DIR/ffmpeg*
@@ -411,6 +423,7 @@ PKG_CONFIG_PATH="$TARGET_DIR/lib/pkgconfig" ./configure \
   --enable-libopencore-amrwb \
   --enable-libopenjpeg \
   --enable-libopus \
+  --enable-librav1e \
   --enable-librtmp \
   --enable-libsoxr \
   --enable-libspeex \
