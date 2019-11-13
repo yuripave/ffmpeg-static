@@ -211,6 +211,12 @@ download \
   "https://github.com/videolan/dav1d/archive/"
 
 download \
+  "v0.7.0.tar.gz" \
+  "SVT-AV1-0.7.0.tar.gz" \
+  "3e304bb6d38a7fcbcc9622690b11475f" \
+  "https://github.com/OpenVisualCloud/SVT-AV1/archive/"
+
+download \
   "ffmpeg-snapshot.tar.bz2" \
   "" \
   "" \
@@ -405,9 +411,16 @@ cd $BUILD_DIR/rav1e*
 cargo cinstall --release --prefix=$TARGET_DIR
 sed -i 's/-lgcc_s/-lgcc_eh/g' $TARGET_DIR/lib/pkgconfig/rav1e.pc
 
+echo "*** Building libsvtav1 ***"
+cd $BUILD_DIR/SVT-AV1*
+[ $rebuild -eq 1 ] && ./Build/linux/build.sh clean || true
+./Build/linux/build.sh release --jobs $jval --prefix $TARGET_DIR --static --install
+cp ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch $BUILD_DIR
+
 # FFMpeg
 echo "*** Building FFmpeg ***"
 cd $BUILD_DIR/ffmpeg*
+patch -p1 < $BUILD_DIR/0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch
 [ $rebuild -eq 1 -a -f Makefile ] && make distclean || true
 
 [ ! -f config.status ] && PATH="$BIN_DIR:$PATH" \
@@ -440,6 +453,7 @@ PKG_CONFIG_PATH="$TARGET_DIR/lib/pkgconfig" ./configure \
   --enable-librtmp \
   --enable-libsoxr \
   --enable-libspeex \
+  --enable-libsvtav1 \
   --enable-libtheora \
   --enable-libvidstab \
   --enable-libvo-amrwbenc \
