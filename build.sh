@@ -90,10 +90,10 @@ download \
   "https://github.com/madler/zlib/archive/"
 
 download \
-  "x264-snapshot-20191110-2245-stable.tar.bz2" \
+  "x264-1771b556ee45207f8711744ccbd5d42a3949b14c.tar.gz" \
   "" \
-  "13915477e22a8174b00ff629c996fdac" \
-  "http://download.videolan.org/pub/videolan/x264/snapshots/"
+  "b799116f1aae4bf126ad50ef4efe50ed" \
+  "https://code.videolan.org/videolan/x264/-/archive/1771b556ee45207f8711744ccbd5d42a3949b14c/"
 
 download \
   "x265_3.2.1.tar.gz" \
@@ -199,15 +199,15 @@ download \
   "https://github.com/xiph/speex/archive/"
 
 download \
-  "0.1.0.tar.gz" \
-  "rav1e-0.1.0.tar.gz" \
-  "cd383e61e86eef0a689c9c951a4c7652" \
+  "v0.2.0.tar.gz" \
+  "rav1e-0.2.0.tar.gz" \
+  "3b8a1727955f2244dfc7cb76413f93e2" \
   "https://github.com/xiph/rav1e/archive/"
 
 download \
-  "0.5.1.tar.gz" \
-  "dav1d-0.5.1.tar.gz" \
-  "c99c75a1d2ff8673f4a4d00d2d8aae9d" \
+  "0.5.2.tar.gz" \
+  "dav1d-0.5.2.tar.gz" \
+  "cb8557037a46d9a580ba749033643741" \
   "https://github.com/videolan/dav1d/archive/"
 
 download \
