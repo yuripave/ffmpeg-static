@@ -199,9 +199,9 @@ download \
   "https://github.com/xiph/speex/archive/"
 
 download \
-  "v0.2.0.tar.gz" \
-  "rav1e-0.2.0.tar.gz" \
-  "3b8a1727955f2244dfc7cb76413f93e2" \
+  "v0.3.0.tar.gz" \
+  "rav1e-0.3.0.tar.gz" \
+  "eb58bc85dc37adf2c4539f4f901a7f5d" \
   "https://github.com/xiph/rav1e/archive/"
 
 download \
