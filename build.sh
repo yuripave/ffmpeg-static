@@ -90,15 +90,15 @@ download \
   "https://github.com/madler/zlib/archive/"
 
 download \
-  "x264-1771b556ee45207f8711744ccbd5d42a3949b14c.tar.gz" \
+  "x264-4c9b076be684832b9141f5b6c03aaf302adca0e4.tar.gz" \
   "" \
-  "b799116f1aae4bf126ad50ef4efe50ed" \
-  "https://code.videolan.org/videolan/x264/-/archive/1771b556ee45207f8711744ccbd5d42a3949b14c/"
+  "0fe3a28d937b83e88686e06d46cecfb5" \
+  "https://code.videolan.org/videolan/x264/-/archive/4c9b076be684832b9141f5b6c03aaf302adca0e4/"
 
 download \
-  "x265_3.2.1.tar.gz" \
+  "x265_3.4.tar.gz" \
   "" \
-  "94808045a34d88a857e5eaf3f68f4bca" \
+  "e37b91c1c114f8815a3f46f039fe79b5" \
   "https://bitbucket.org/multicoreware/x265/downloads/"
 
 download \
@@ -139,9 +139,9 @@ download \
   "https://archive.mozilla.org/pub/opus/"
 
 download \
-  "v1.8.1.tar.gz" \
-  "vpx-1.8.1.tar.gz" \
-  "17b1b9278b5066ecd1a76e82266ecdf9" \
+  "v1.8.2.tar.gz" \
+  "vpx-1.8.2.tar.gz" \
+  "6dbccca688886c66a216d7e445525bce" \
   "https://github.com/webmproject/libvpx/archive"
 
 download \
@@ -175,9 +175,9 @@ download \
   "https://github.com/uclouvain/openjpeg/archive/"
 
 download \
-  "v1.0.3.tar.gz" \
-  "libwebp-1.0.3.tar.gz" \
-  "4c4da84d73f137c8799171c8425ae23f" \
+  "v1.1.0.tar.gz" \
+  "libwebp-1.1.0.tar.gz" \
+  "35831dd0f8d42119691eb36f2b9d23b7" \
   "https://github.com/webmproject/libwebp/archive/"
 
 download \
@@ -199,21 +199,21 @@ download \
   "https://github.com/xiph/speex/archive/"
 
 download \
-  "v0.3.0.tar.gz" \
-  "rav1e-0.3.0.tar.gz" \
-  "eb58bc85dc37adf2c4539f4f901a7f5d" \
+  "v0.3.3.tar.gz" \
+  "rav1e-0.3.3.tar.gz" \
+  "4a9f8e2f9d25f516bdbec94235370edf" \
   "https://github.com/xiph/rav1e/archive/"
 
 download \
-  "0.5.2.tar.gz" \
-  "dav1d-0.5.2.tar.gz" \
-  "cb8557037a46d9a580ba749033643741" \
+  "0.7.0.tar.gz" \
+  "dav1d-0.7.0.tar.gz" \
+  "6f40671dc429a0752edf1c4247b91f4b" \
   "https://github.com/videolan/dav1d/archive/"
 
 download \
-  "ffmpeg-snapshot.tar.bz2" \
+  "ffmpeg-4.3.tar.bz2" \
   "" \
-  "" \
+  "ed9b3002fb491d704b548a97e1d00391" \
   "https://ffmpeg.org/releases/"
 
 [ $download_only -eq 1 ] && exit 0
@@ -396,7 +396,7 @@ make install
 
 echo "*** Building libdav1d ***"
 cd $BUILD_DIR/dav1d*
-meson build --prefix=$TARGET_DIR --libdir=lib --buildtype release -Ddefault_library=static
+PATH="$BIN_DIR:$PATH" meson build --prefix=$TARGET_DIR --libdir=lib --buildtype release -Ddefault_library=static
 ninja -C build install
 
 echo "*** Building librav1e ***"
