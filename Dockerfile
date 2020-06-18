@@ -1,4 +1,6 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
+
+ARG DEBIAN_FRONTEND=noninteractive
 
 # Basic packages needed to download dependencies and unpack them.
 RUN apt-get update && apt-get install -y \
@@ -26,6 +28,7 @@ RUN apt-get update && apt-get install -y \
   libopencore-amrwb-dev \
   libsdl2-dev \
   libspeex-dev \
+  libssl-dev \
   libtheora-dev \
   libtool \
   libva-dev \
@@ -38,12 +41,22 @@ RUN apt-get update && apt-get install -y \
   libxcb-xfixes0-dev \
   libxvidcore-dev \
   lsb-release \
+  nasm \
+  ninja-build \
   pkg-config \
+  python3-pip \
   sudo \
   tar \
   texi2html \
   yasm \
   && rm -rf /var/lib/apt/lists/*
+
+# Install rust and cargo-c
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y \
+  && /root/.cargo/bin/cargo install cargo-c
+
+# Install meson
+RUN pip3 install meson
 
 # Copy the build scripts.
 COPY ./ /ffmpeg-static/

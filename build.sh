@@ -72,15 +72,15 @@ cd $BUILD_DIR
   "http://www.tortall.net/projects/yasm/releases/"
 
 [ $is_x86 -eq 1 ] && download \
-  "nasm-2.13.01.tar.gz" \
+  "nasm-2.14.02.tar.gz" \
   "" \
-  "16050aa29bc0358989ef751d12b04ed2" \
-  "http://www.nasm.us/pub/nasm/releasebuilds/2.13.01/"
+  "58886d8a4084d7c09adb0f425266051b" \
+  "http://www.nasm.us/pub/nasm/releasebuilds/2.14.02/"
 
 download \
-  "OpenSSL_1_0_2o.tar.gz" \
+  "OpenSSL_1_0_2t.tar.gz" \
   "" \
-  "5b5c050f83feaa0c784070637fac3af4" \
+  "099ae63847ed909813d82177ef009011" \
   "https://github.com/openssl/openssl/archive/"
 
 download \
@@ -90,58 +90,58 @@ download \
   "https://github.com/madler/zlib/archive/"
 
 download \
-  "last_x264.tar.bz2" \
+  "x264-4c9b076be684832b9141f5b6c03aaf302adca0e4.tar.gz" \
   "" \
-  "nil" \
-  "http://download.videolan.org/pub/videolan/x264/snapshots/"
+  "0fe3a28d937b83e88686e06d46cecfb5" \
+  "https://code.videolan.org/videolan/x264/-/archive/4c9b076be684832b9141f5b6c03aaf302adca0e4/"
 
 download \
-  "x265_2.7.tar.gz" \
+  "x265_3.4.tar.gz" \
   "" \
-  "b0d7d20da2a418fa4f53a559946ea079" \
+  "e37b91c1c114f8815a3f46f039fe79b5" \
   "https://bitbucket.org/multicoreware/x265/downloads/"
 
 download \
-  "v0.1.6.tar.gz" \
-  "fdk-aac.tar.gz" \
-  "223d5f579d29fb0d019a775da4e0e061" \
+  "v2.0.1.tar.gz" \
+  "fdk-aac-2.0.1.tar.gz" \
+  "5b85f858ee416a058574a1028a3e1b85" \
   "https://github.com/mstorsjo/fdk-aac/archive"
 
 # libass dependency
 download \
-  "harfbuzz-1.4.6.tar.bz2" \
+  "harfbuzz-2.6.4.tar.xz" \
   "" \
-  "e246c08a3bac98e31e731b2a1bf97edf" \
+  "2b3a4dfdb3e5e50055f941978944da9f" \
   "https://www.freedesktop.org/software/harfbuzz/release/"
 
 download \
-  "fribidi-1.0.2.tar.bz2" \
+  "fribidi-1.0.7.tar.bz2" \
   "" \
-  "bd2eb2f3a01ba11a541153f505005a7b" \
-  "https://github.com/fribidi/fribidi/releases/download/v1.0.2/"
+  "4c020b0f5136dd012ee00f1e1122f6aa" \
+  "https://github.com/fribidi/fribidi/releases/download/v1.0.7/"
 
 download \
-  "0.13.6.tar.gz" \
-  "libass-0.13.6.tar.gz" \
-  "nil" \
+  "0.14.0.tar.gz" \
+  "libass-0.14.0.tar.gz" \
+  "3c84884aa0589486bded10f71829bf39" \
   "https://github.com/libass/libass/archive/"
 
 download \
-  "lame-3.99.5.tar.gz" \
+  "lame-3.100.tar.gz" \
   "" \
-  "84835b313d4a8b68f5349816d33e07ce" \
-  "http://downloads.sourceforge.net/project/lame/lame/3.99"
+  "83e260acbe4389b54fe08e0bdbf7cddb" \
+  "http://downloads.sourceforge.net/project/lame/lame/3.100"
 
 download \
-  "opus-1.1.2.tar.gz" \
+  "opus-1.3.1.tar.gz" \
   "" \
-  "1f08a661bc72930187893a07f3741a91" \
-  "https://github.com/xiph/opus/releases/download/v1.1.2"
+  "d7c07db796d21c9cf1861e0c2b0c0617" \
+  "https://archive.mozilla.org/pub/opus/"
 
 download \
-  "v1.6.1.tar.gz" \
-  "vpx-1.6.1.tar.gz" \
-  "b0925c8266e2859311860db5d76d1671" \
+  "v1.8.2.tar.gz" \
+  "vpx-1.8.2.tar.gz" \
+  "6dbccca688886c66a216d7e445525bce" \
   "https://github.com/webmproject/libvpx/archive"
 
 download \
@@ -151,9 +151,9 @@ download \
   "https://rtmpdump.mplayerhq.hu/download/"
 
 download \
-  "soxr-0.1.2-Source.tar.xz" \
+  "soxr-0.1.3-Source.tar.xz" \
   "" \
-  "0866fc4320e26f47152798ac000de1c0" \
+  "3f16f4dcb35b471682d4321eda6f6c08" \
   "https://sourceforge.net/projects/soxr/files/"
 
 download \
@@ -163,21 +163,21 @@ download \
   "https://github.com/georgmartius/vid.stab/archive/"
 
 download \
-  "release-2.7.4.tar.gz" \
-  "zimg-release-2.7.4.tar.gz" \
-  "1757dcc11590ef3b5a56c701fd286345" \
+  "release-2.9.2.tar.gz" \
+  "zimg-release-2.9.2.tar.gz" \
+  "a3755bff6207fcca5c06e7b1b408ce2e" \
   "https://github.com/sekrit-twc/zimg/archive/"
 
 download \
-  "v2.1.2.tar.gz" \
-  "openjpeg-2.1.2.tar.gz" \
-  "40a7bfdcc66280b3c1402a0eb1a27624" \
+  "v2.3.1.tar.gz" \
+  "openjpeg-2.3.1.tar.gz" \
+  "3b9941dc7a52f0376694adb15a72903f" \
   "https://github.com/uclouvain/openjpeg/archive/"
 
 download \
-  "v0.6.1.tar.gz" \
-  "libwebp-0.6.1.tar.gz" \
-  "1c3099cd2656d0d80d3550ee29fc0f28" \
+  "v1.1.0.tar.gz" \
+  "libwebp-1.1.0.tar.gz" \
+  "35831dd0f8d42119691eb36f2b9d23b7" \
   "https://github.com/webmproject/libwebp/archive/"
 
 download \
@@ -187,9 +187,9 @@ download \
   "https://github.com/xiph/vorbis/archive/"
 
 download \
-  "v1.3.3.tar.gz" \
-  "ogg-1.3.3.tar.gz" \
-  "b8da1fe5ed84964834d40855ba7b93c2" \
+  "v1.3.4.tar.gz" \
+  "ogg-1.3.4.tar.gz" \
+  "df1a9a95251a289aa5515b869db4b15f" \
   "https://github.com/xiph/ogg/archive/"
 
 download \
@@ -199,9 +199,21 @@ download \
   "https://github.com/xiph/speex/archive/"
 
 download \
-  "ffmpeg-snapshot.tar.bz2" \
+  "v0.3.3.tar.gz" \
+  "rav1e-0.3.3.tar.gz" \
+  "4a9f8e2f9d25f516bdbec94235370edf" \
+  "https://github.com/xiph/rav1e/archive/"
+
+download \
+  "0.7.0.tar.gz" \
+  "dav1d-0.7.0.tar.gz" \
+  "6f40671dc429a0752edf1c4247b91f4b" \
+  "https://github.com/videolan/dav1d/archive/"
+
+download \
+  "ffmpeg-4.3.tar.bz2" \
   "" \
-  "" \
+  "ed9b3002fb491d704b548a97e1d00391" \
   "https://ffmpeg.org/releases/"
 
 [ $download_only -eq 1 ] && exit 0
@@ -382,6 +394,17 @@ cd $BUILD_DIR/speex*
 make -j $jval
 make install
 
+echo "*** Building libdav1d ***"
+cd $BUILD_DIR/dav1d*
+PATH="$BIN_DIR:$PATH" meson build --prefix=$TARGET_DIR --libdir=lib --buildtype release -Ddefault_library=static
+ninja -C build install
+
+echo "*** Building librav1e ***"
+cd $BUILD_DIR/rav1e*
+[ $rebuild -eq 1 ] && cargo clean || true
+cargo cinstall --release --prefix=$TARGET_DIR
+sed -i 's/-lgcc_s/-lgcc_eh/g' $TARGET_DIR/lib/pkgconfig/rav1e.pc
+
 # FFMpeg
 echo "*** Building FFmpeg ***"
 cd $BUILD_DIR/ffmpeg*
@@ -396,13 +419,15 @@ PKG_CONFIG_PATH="$TARGET_DIR/lib/pkgconfig" ./configure \
   --extra-libs="-lpthread -lm -lz" \
   --extra-ldexeflags="-static" \
   --bindir="$BIN_DIR" \
+  --disable-debug \
+  --disable-ffplay \
   --enable-pic \
-  --enable-ffplay \
   --enable-fontconfig \
   --enable-frei0r \
   --enable-gpl \
   --enable-version3 \
   --enable-libass \
+  --enable-libdav1d \
   --enable-libfribidi \
   --enable-libfdk-aac \
   --enable-libfreetype \
@@ -411,6 +436,7 @@ PKG_CONFIG_PATH="$TARGET_DIR/lib/pkgconfig" ./configure \
   --enable-libopencore-amrwb \
   --enable-libopenjpeg \
   --enable-libopus \
+  --enable-librav1e \
   --enable-librtmp \
   --enable-libsoxr \
   --enable-libspeex \
