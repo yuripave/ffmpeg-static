@@ -72,10 +72,10 @@ cd $BUILD_DIR
   "http://www.tortall.net/projects/yasm/releases/"
 
 [ $is_x86 -eq 1 ] && download \
-  "nasm-2.14.02.tar.gz" \
+  "nasm-2.15.05.tar.gz" \
   "" \
-  "58886d8a4084d7c09adb0f425266051b" \
-  "http://www.nasm.us/pub/nasm/releasebuilds/2.14.02/"
+  "4ab99e8e777c249f32d5c10e82c658f1" \
+  "http://www.nasm.us/pub/nasm/releasebuilds/2.15.05/"
 
 download \
   "OpenSSL_1_0_2t.tar.gz" \
@@ -90,16 +90,16 @@ download \
   "https://github.com/madler/zlib/archive/"
 
 download \
-  "x264-4c9b076be684832b9141f5b6c03aaf302adca0e4.tar.gz" \
+  "x264-0d754ec36013fee82978496cd56fbd48824910b3.tar.gz" \
   "" \
-  "0fe3a28d937b83e88686e06d46cecfb5" \
-  "https://code.videolan.org/videolan/x264/-/archive/4c9b076be684832b9141f5b6c03aaf302adca0e4/"
+  "f6a7c630218bb2809977142d8e10af59" \
+  "https://code.videolan.org/videolan/x264/-/archive/0d754ec36013fee82978496cd56fbd48824910b3/"
 
 download \
+  "3.4.tar.gz" \
   "x265_3.4.tar.gz" \
-  "" \
-  "e37b91c1c114f8815a3f46f039fe79b5" \
-  "https://bitbucket.org/multicoreware/x265/downloads/"
+  "d867c3a7e19852974cf402c6f6aeaaf3" \
+  "https://github.com/videolan/x265/archive/"
 
 download \
   "v2.0.1.tar.gz" \
@@ -139,9 +139,9 @@ download \
   "https://archive.mozilla.org/pub/opus/"
 
 download \
-  "v1.8.2.tar.gz" \
-  "vpx-1.8.2.tar.gz" \
-  "6dbccca688886c66a216d7e445525bce" \
+  "v1.9.0.tar.gz" \
+  "vpx-1.9.0.tar.gz" \
+  "e5fab59896984392124d0bfaffc36e14" \
   "https://github.com/webmproject/libvpx/archive"
 
 download \
@@ -181,9 +181,9 @@ download \
   "https://github.com/webmproject/libwebp/archive/"
 
 download \
-  "v1.3.6.tar.gz" \
-  "vorbis-1.3.6.tar.gz" \
-  "03e967efb961f65a313459c5d0f4cbfb" \
+  "v1.3.7.tar.gz" \
+  "vorbis-1.3.7.tar.gz" \
+  "689dc495b22c5f08246c00dab35f1dc7" \
   "https://github.com/xiph/vorbis/archive/"
 
 download \
@@ -199,21 +199,21 @@ download \
   "https://github.com/xiph/speex/archive/"
 
 download \
-  "v0.3.3.tar.gz" \
-  "rav1e-0.3.3.tar.gz" \
-  "4a9f8e2f9d25f516bdbec94235370edf" \
+  "v0.4.0.tar.gz" \
+  "rav1e-0.4.0.tar.gz" \
+  "35cbfb3645f5a6c8710f826cb2028710" \
   "https://github.com/xiph/rav1e/archive/"
 
 download \
-  "0.7.0.tar.gz" \
-  "dav1d-0.7.0.tar.gz" \
-  "6f40671dc429a0752edf1c4247b91f4b" \
+  "0.8.1.tar.gz" \
+  "dav1d-0.8.1.tar.gz" \
+  "b8fdc9d44de0849446edc27d403a4f0d" \
   "https://github.com/videolan/dav1d/archive/"
 
 download \
-  "ffmpeg-4.3.tar.bz2" \
+  "ffmpeg-4.3.1.tar.bz2" \
   "" \
-  "ed9b3002fb491d704b548a97e1d00391" \
+  "804707549590e90880e8ecd4e5244fd8" \
   "https://ffmpeg.org/releases/"
 
 [ $download_only -eq 1 ] && exit 0
